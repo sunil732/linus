@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="bf10a9e7-31e5-4c5e-98c6-534c4b681039" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="againtestFlow" doc:id="b8c2a8e4-0bdb-4a91-87da-d24c813419c1" >
+		<http:listener doc:name="Listener" doc:id="e48b0cbd-c559-4a63-b822-5aeb4deec599" config-ref="HTTP_Listener_config" path="/rest"/>
+		<set-payload value="'audi'" doc:name="Set Payload" doc:id="3da14d87-c41b-4b5f-a9e3-efaf3b723d9f" />
+		<logger level="INFO" doc:name="Logger" doc:id="99cd7ee8-457e-4af6-9d67-b3ef308b881f" message="#[payload]"/>
+	</flow>
+</mule>
